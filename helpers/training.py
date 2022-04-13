@@ -1,11 +1,10 @@
 import matplotlib.pyplot as plt
-import os
 import torch
+from helpers import model_state
 
-# TODO will need to refactor this a bit better. I.e. move the saving and loading into its static? class.
+
 # TODO And move training related helpers into its own. Will keep this in the mean time.
-
-def fifa_training_validation_loop(n_epochs, training_loader, valid_loader, model, optimizer, criterion, model_name,
+def training_and_validation_loop(n_epochs, training_loader, valid_loader, model, optimizer, criterion, model_name,
                                   model_dir, plot):
     train_loss_list = []
     valid_loss_list = []
@@ -62,13 +61,13 @@ def fifa_training_validation_loop(n_epochs, training_loader, valid_loader, model
         plt.show()
 
     print('saving model')
-    save_model(model, model_name, model_dir)
+    model_state.save_model(model, model_name, model_dir)
 
     return model
 
 
 # https://pytorch.org/tutorials/beginner/basics/optimization_tutorial.html
-def fifa_test_loop(data_loader, criterion, model):
+def test_loop_with_model(data_loader, criterion, model):
     test_loss = 0
     correct = 0
     model.eval()
@@ -101,10 +100,10 @@ def fifa_test_loop(data_loader, criterion, model):
     # plt.show()
 
 
-def fifa_test_loop_load_model(data_loader, criterion, model, model_name, model_dir):
+def test_loop_with_loaded_model(data_loader, criterion, model, model_name, model_dir):
     test_loss = 0
     correct = 0
-    model = get_saved_model(model, model_name, model_dir)
+    model = model_state.get_saved_model(model, model_name, model_dir)
     model.eval()
 
     for inputs, target in data_loader:
@@ -124,28 +123,3 @@ def fifa_test_loop_load_model(data_loader, criterion, model, model_name, model_d
         correct /= rounded_predictions.size(0)
 
         print(f"Test Error: \n Accuracy: {(100 * correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
-
-
-def save_model(model, model_name, model_dir):
-    print("Saving the model as " + model_name)
-
-    if not os.path.isdir(model_dir):
-        os.makedirs(model_dir)
-
-    path = os.path.join(model_dir, model_name)
-    # saving state dictionary
-    torch.save(model.state_dict(), path)
-
-
-def get_saved_model(model, model_name, model_dir):
-    print("looking for the following model: " + model_name)
-
-    if not os.path.isdir(model_dir):
-        Exception("Directory does not exist")
-
-    path = os.path.join(model_dir, model_name)
-
-    _model = model
-    _model.load_state_dict(torch.load(path))
-
-    return _model

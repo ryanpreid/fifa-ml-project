@@ -6,14 +6,16 @@ from tkinter import ttk
 
 class FifaSliders:
 
-    def __init__(self, root, name, column, row):
+    def __init__(self, root, name, column, row, min=None, max=None):
         self.root = root
         self.column = column
         self.row = row
         self.name = name
+        self.min = min
+        self.max = max
 
         self.current_value = tk.IntVar()
-        self.current_value.set(50)
+        self.current_value.set(self.set_initial_value())
 
         # label for the slider
         self.slider_label = ttk.Label(
@@ -30,8 +32,8 @@ class FifaSliders:
         #  slider
         self.slider = ttk.Scale(
             self.root,
-            from_=0,
-            to=100,
+            from_=self.min,
+            to=self.max,
             orient='horizontal',  # vertical
             command=self.slider_changed,
             variable=self.current_value
@@ -60,3 +62,11 @@ class FifaSliders:
 
     def slider_changed(self, event):
         self.value_label.configure(text=self.get_current_value())
+
+    def set_initial_value(self):
+
+        if self.min is None and self.max is None:
+            self.min = 0
+            self.max = 100
+
+        return int((self.max + self.min)/2)
