@@ -16,5 +16,23 @@ This is a project for applying different ML models to a [FIFA dataset](https://w
 
 ## Mutliclass Classification 
 
-[Toronto edu](https://www.cs.toronto.edu/~lczhang/321/tut/tut04.pdf)
+[Toronto edu](https://www.cs.toronto.edu/~lczhang/321/tut/tut04.pdf) <br />
+[Discuss Pytorch](https://discuss.pytorch.org/t/using-bcewithlogisloss-for-multi-label-classification/67011/4) <br />
+[Discuss Pytorch 2](https://discuss.pytorch.org/t/nn-bcewithlogitsloss-cant-accept-one-hot-target/59980) <br />
+[medium](https://medium.com/bitgrit-data-science-publication/building-an-image-classification-model-with-pytorch-from-scratch-f10452073212) <br />
+[medium 2](https://medium.com/swlh/cross-entropy-loss-in-pytorch-c010faf97bab) <br />
+[Sparrow](https://sparrow.dev/cross-entropy-loss-in-pytorch/) <br />
+[Pytorch tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) <br />
+[Multiclass  Classification](https://towardsdatascience.com/pytorch-tabular-multiclass-classification-9f8211a123ab) <br />
+[SO](https://stackoverflow.com/questions/50981714/multi-label-multi-class-image-classifier-convnet-with-pytorch) <br />
 
+
+##Kmeans 
+[scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html) <br />
+[towards data science](https://towardsdatascience.com/machine-learning-algorithms-part-9-k-means-example-in-python-f2ad05ed5203) <br />
+[kaggle](https://www.kaggle.com/code/prashant111/k-means-clustering-with-python/notebook) <br />
+[datacamp](https://www.datacamp.com/community/tutorials/k-means-clustering-python) <br />
+[medium](https://medium.com/data-folks-indonesia/step-by-step-to-understanding-k-means-clustering-and-implementation-with-sklearn-b55803f519d6) <br />
+[SO](https://stackoverflow.com/questions/61192374/interpreting-k-means-cluster-centers-output) <br />
+[realpython](https://realpython.com/python-matplotlib-guide/) <br />
+[matplotlib](https://matplotlib.org/stable/tutorials/introductory/pyplot.html) <br />

@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import font as tkfont
+from ui.fifakmeansframe import FifaKmeansFrame
 from ui.fifaoverallvalueframe import FifaOverallValueFrame
 from ui.fifapositionclassifierframe import FifaPositionClassifierFrame
 
@@ -30,7 +30,7 @@ class App(tk.Tk):
         container.pack()
 
         self.frames = {}
-        for F in (FifaOverallValueFrame, FifaPositionClassifierFrame):
+        for F in (FifaOverallValueFrame, FifaPositionClassifierFrame, FifaKmeansFrame):
             page_name = F.__name__
             frame = F(container=container, controller=self)
             self.frames[page_name] = frame
