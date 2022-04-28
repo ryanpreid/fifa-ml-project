@@ -34,7 +34,7 @@ class FifaKmeansFrame(ttk.Frame):
         self.value_label.grid(column=1, row=1, sticky='e')
 
         # Button used to get slider info.
-        prediction_button = ttk.Button(self, text='Overall Fifa Rating Prediction', command=self.kmeans_prediction)
+        prediction_button = ttk.Button(self, text='Make a Prediction', command=self.kmeans_prediction)
         prediction_button.grid(column=1,row=2,sticky='n')
 
         # Plot canvas
