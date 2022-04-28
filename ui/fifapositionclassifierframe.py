@@ -66,6 +66,6 @@ class FifaPositionClassifierFrame(ttk.Frame):
         self.focus_set()
 
     def switch_frame(self, event):
-        next_frame = "FifaOverallValueFrame"
+        next_frame = "FifaKmeansFrame"
         self.controller.show_frame(next_frame)
 

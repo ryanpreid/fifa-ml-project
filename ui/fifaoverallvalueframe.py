@@ -21,16 +21,16 @@ class FifaOverallValueFrame(ttk.Frame):
 
         # Button used to get slider info.
         prediction_button = ttk.Button(self, text='Overall Fifa Rating Prediction', command=self.get_a_prediction)
-        prediction_button.grid(column=1,row=7,sticky='n',)
+        prediction_button.grid(column=1,row=7,sticky='n')
 
         # Info label
         info_label = ttk.Label(self,text='Your predicted rating is: ')
-        info_label.grid(column=1,row=8,sticky='n',)
+        info_label.grid(column=1,row=8,sticky='n')
 
         # overall label
         self.overall_value = tk.DoubleVar()
         overall_label = ttk.Label(self, textvariable=self.overall_value)
-        overall_label.grid(column=1,row=9,sticky='n',)
+        overall_label.grid(column=1,row=9,sticky='n')
 
         # Model for Frame
         self.frame_model = ModelFactory().get_model("ReducedMLP")
