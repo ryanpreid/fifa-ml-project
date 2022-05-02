@@ -1,7 +1,6 @@
 # fifa-ml-project
 This is a project for applying different ML models to a [FIFA dataset](https://www.kaggle.com/stefanoleone992/fifa-22-players-lineup-visualization-and-more).
 
-
 # Useful links: 
 
 ## Binary Classification 
@@ -26,8 +25,8 @@ This is a project for applying different ML models to a [FIFA dataset](https://w
 [Multiclass  Classification](https://towardsdatascience.com/pytorch-tabular-multiclass-classification-9f8211a123ab) <br />
 [SO](https://stackoverflow.com/questions/50981714/multi-label-multi-class-image-classifier-convnet-with-pytorch) <br />
 
+## Kmeans
 
-##Kmeans 
 [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html) <br />
 [towards data science](https://towardsdatascience.com/machine-learning-algorithms-part-9-k-means-example-in-python-f2ad05ed5203) <br />
 [kaggle](https://www.kaggle.com/code/prashant111/k-means-clustering-with-python/notebook) <br />
@@ -36,3 +35,10 @@ This is a project for applying different ML models to a [FIFA dataset](https://w
 [SO](https://stackoverflow.com/questions/61192374/interpreting-k-means-cluster-centers-output) <br />
 [realpython](https://realpython.com/python-matplotlib-guide/) <br />
 [matplotlib](https://matplotlib.org/stable/tutorials/introductory/pyplot.html) <br />
+
+## naive bayes
+
+[scikit-learn](https://scikit-learn.org/stable/modules/naive_bayes.html) <br />
+[guide](https://www.analyticsvidhya.com/blog/2021/01/a-guide-to-the-naive-bayes-algorithm/) <br />
+[paperspace](https://blog.paperspace.com/introduction-to-naive-bayes/) <br />
+[datacamp](https://www.datacamp.com/community/tutorials/naive-bayes-scikit-learn) <br />

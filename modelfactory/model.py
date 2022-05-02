@@ -1,7 +1,14 @@
 import abc
 import torch
 from helpers import model_state
-from models import mlpreduced, positionclassifier
+from models import mlpreduced, positionclassifier, naivebayes
+
+
+# Helper method
+def get_position( index):
+    position = ["forward", "midfielder", "defender", "goalkeeper"]
+
+    return position[index]
 
 
 class Model(metaclass=abc.ABCMeta):
@@ -58,16 +65,25 @@ class PositionClassifierModel(Model):
 
         index = torch.argmax(predictions).item()
 
-        position = self.get_position(index)
+        position = get_position(index)
 
         return position
 
-    def get_position(self, index):
 
-        position = ["forward", "midfielder", "defender", "goalkeeper"]
+class NB(Model):
+    def __init__(self):
+        self.model = self.load_model()
 
-        return position[index]
+    def load_model(self):
+        return naivebayes.NaiveBayes()
 
+    def prediction(self, input):
+
+        prediction = self.model.nb_prediction(input)
+
+        position = get_position(prediction[0])
+
+        return position
 
     # TODO add different models. The idea is different frames can switch models or have their own.
     # TODO need to train other models first...
@@ -77,5 +93,7 @@ class ModelFactory:
             return ReducedMLP()
         if name == "PositionClassifierModel":
             return PositionClassifierModel()
+        if name == "NB":
+            return NB()
 
 

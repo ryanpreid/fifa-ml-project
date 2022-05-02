@@ -46,7 +46,6 @@ class FifaKmeansFrame(ttk.Frame):
         self.canvas.get_tk_widget().grid(column=1,row=4)
 
         # Accuracy label
-        # self.label_name = "num of clusters"
         self.accuracy_value = tk.StringVar()
         self.accuracy_value.set("Accuracy score: ")
         self.accuracy_label = ttk.Label(self, textvariable=self.accuracy_value)
