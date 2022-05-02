@@ -1,4 +1,6 @@
 import tkinter as tk
+
+import numpy as np
 import torch
 from modelfactory.model import ModelFactory
 from tkinter import ttk
@@ -32,9 +34,13 @@ class FifaPositionClassifierFrame(ttk.Frame):
 
         self.attribute_sliders = self.build_list_of_sliders()
 
-        # Button used to get slider info.
-        prediction_button = ttk.Button(self, text='Fifa Position Prediction', command=self.get_a_prediction)
-        prediction_button.grid(column=1,row=14,sticky='n',)
+        # Button used to get slider info and make prediction with deep learning
+        dl_prediction_button = ttk.Button(self, text='Deep Learning Prediction', command=self.get_a_dl_prediction)
+        dl_prediction_button.grid(column=0,row=14,sticky='n',)
+
+        # Button used to get slider info and make prediction with naive bayes
+        nb_prediction_button = ttk.Button(self, text='Naive Bayes Prediction', command=self.get_a_nb_prediction)
+        nb_prediction_button.grid(column=2,row=14,sticky='n',)
 
         # Info label
         info_label = ttk.Label(self,text='Your predicted position is: ')
@@ -46,19 +52,34 @@ class FifaPositionClassifierFrame(ttk.Frame):
         overall_label.grid(column=1,row=16,sticky='n',)
 
         # Model for Frame
-        self.frame_model = ModelFactory().get_model("PositionClassifierModel")
+        self.frame_model_DL = ModelFactory().get_model("PositionClassifierModel")
+
+        # Model for Frame
+        self.frame_model_NB = ModelFactory().get_model("NB")
 
         self.bind('<Return>', self.switch_frame)
 
     def build_list_of_sliders(self):
         return [FifaSliders(self, self.fifa_attributes[i][0], 0, i, self.fifa_attributes[i][1], self.fifa_attributes[i][2]) for i in range(len(self.fifa_attributes))]
 
-    def get_a_prediction(self):
+    def get_a_dl_prediction(self):
 
         slider_values = [att.get_current_value() for att in self.attribute_sliders]
 
         print(slider_values)
-        prediction = self.frame_model.prediction(torch.FloatTensor(slider_values))
+        prediction = self.frame_model_DL.prediction(torch.FloatTensor(slider_values))
+
+        print(prediction)
+        # Update the overall label via the overall_value variable
+        self.overall_value.set(prediction)
+        self.focus_set()
+
+    def get_a_nb_prediction(self):
+
+        slider_values = [att.get_current_value() for att in self.attribute_sliders]
+
+        print(slider_values)
+        prediction = self.frame_model_NB.prediction(slider_values)
 
         print(prediction)
         # Update the overall label via the overall_value variable
